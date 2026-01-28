@@ -37,52 +37,19 @@ const ProjectCard = ({
   project: (typeof projects)[0]
   index: number
 }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left - rect.width / 2) / 20
-    const y = (e.clientY - rect.top - rect.height / 2) / 20
-    setMousePosition({ x, y })
-  }
-
-  const handleMouseLeave = () => {
-    setMousePosition({ x: 0, y: 0 })
-  }
-
   return (
     <AnimatedText delay={0.3 + index * 0.1}>
       <motion.div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
         className="group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-3xl overflow-hidden hover:border-primary-500/40 transition-all duration-300"
-        style={{
-          transformStyle: "preserve-3d",
-        }}
-        animate={{
-          rotateX: mousePosition.y,
-          rotateY: mousePosition.x,
-        }}
+        whileHover={{ y: -8, scale: 1.01 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        whileHover={{ y: -12, scale: 1.02 }}
       >
-        {/* 3D Glow effect */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/10 to-primary-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            transform: "translateZ(-10px)",
-          }}
-        />
+        {/* Glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/10 to-primary-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Project Image/Gradient */}
         <div
           className={`h-48 bg-gradient-to-br ${project.gradient} opacity-80 group-hover:opacity-100 transition-all duration-300 relative`}
-          style={{
-            transform: "translateZ(20px)",
-          }}
         >
           {/* Shine effect */}
           <motion.div
@@ -100,7 +67,7 @@ const ProjectCard = ({
         </div>
 
         {/* Content */}
-        <div className="p-6" style={{ transform: "translateZ(30px)" }}>
+        <div className="p-6">
           <h3 className="text-xl font-bold mb-2 text-gray-100 group-hover:text-primary-400 transition-colors">
             {project.title}
           </h3>
@@ -113,7 +80,7 @@ const ProjectCard = ({
             {project.tech.map(tech => (
               <span
                 key={tech}
-                className="px-3 py-1 text-xs rounded-full bg-primary-500/10 text-primary-400 border border-primary-500/20 hover:bg-primary-500/20 hover:scale-105 transition-all"
+                className="px-3 py-1 text-xs rounded-full bg-primary-500/10 text-primary-400 border border-primary-500/20 hover:bg-primary-500/20 transition-all"
               >
                 {tech}
               </span>
@@ -123,7 +90,7 @@ const ProjectCard = ({
           {/* Links */}
           <div className="flex gap-3">
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 text-primary-400 text-sm font-medium transition-all shadow-lg shadow-primary-500/0 hover:shadow-primary-500/20"
             >
@@ -131,7 +98,7 @@ const ProjectCard = ({
               <span>Live Demo</span>
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 text-gray-300 text-sm font-medium transition-all"
             >
@@ -177,10 +144,7 @@ export const Projects = () => {
           </p>
         </AnimatedText>
 
-        <div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          style={{ perspective: "1000px" }}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
