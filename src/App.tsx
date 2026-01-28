@@ -1,43 +1,50 @@
-import { useState } from "react"
-import reactLogo from "./assets/react.svg"
-import viteLogo from "/vite.svg"
+import { motion } from "framer-motion"
+import { Dock } from "./components/dock/Dock"
+import { Hero } from "./components/sections/Hero"
+import { About } from "./components/sections/About"
+import { Projects } from "./components/sections/Projects"
+import { Skills } from "./components/sections/Skills"
+import { Contact } from "./components/sections/Contact"
+import { useScrollSpy } from "./hooks/useScrollSpy"
+import { useElasticScroll } from "./hooks/useElasticScroll"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const activeSection = useScrollSpy()
+  const { scrollDelta } = useElasticScroll()
 
   return (
-    <div className="max-w-screen-xl mx-auto p-8 text-center">
-      <div className="flex justify-center gap-0">
-        <a href="https://vite.dev" target="_blank">
-          <img
-            src={viteLogo}
-            className="h-24 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#646cffaa]"
-            alt="Vite logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img
-            src={reactLogo}
-            className="h-24 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa] motion-safe:animate-[spin_20s_linear_infinite]"
-            alt="React logo"
-          />
-        </a>
-      </div>
-      <h1 className="text-5xl leading-tight">Vite + React</h1>
-      <div className="p-8">
-        <button
-          onClick={() => setCount(count => count + 1)}
-          className="rounded-lg border border-transparent px-5 py-2.5 text-base font-medium bg-[#1a1a1a] cursor-pointer transition-colors duration-250 hover:border-[#646cff] focus:outline-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-[-webkit-focus-ring-color] dark:bg-[#1a1a1a] light:bg-[#f9f9f9]"
-        >
-          count is {count}
-        </button>
-        <p className="mt-4">
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div className="relative">
+      {/* Main content with elastic transform */}
+      <motion.main
+        animate={{
+          y: scrollDelta * 0.3,
+          scale: 1 - Math.abs(scrollDelta) * 0.0002,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        style={{
+          transformOrigin: scrollDelta > 0 ? "top" : "bottom",
+        }}
+      >
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </motion.main>
+
+      {/* Dock navigation */}
+      <Dock activeSection={activeSection} />
+
+      {/* Footer */}
+      <footer className="py-8 text-center text-gray-500 border-t border-gray-800 relative z-10">
+        <p>
+          &copy; {new Date().getFullYear()} Daniel Oquelis. All rights reserved.
         </p>
-      </div>
-      <p className="text-[#888]">
-        Click on the Vite and React logos to learn more
-      </p>
+      </footer>
     </div>
   )
 }

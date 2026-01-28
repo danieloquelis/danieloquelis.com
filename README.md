@@ -1,75 +1,151 @@
-# React + TypeScript + Vite
+# Daniel Oquelis - Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, highly interactive portfolio website featuring a **macOS-style dock navigation** with glassmorphism design and smooth animations.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **macOS-Style Dock Navigation**: Fixed bottom dock with icon magnification effects using Framer Motion
+- **Smooth Scroll Navigation**: IntersectionObserver tracking active sections with hash-based URLs
+- **Glassmorphism Design**: Modern glass effect with backdrop blur and orange (#FF8B4D) accents
+- **Dark Theme**: Professional dark theme optimized for tech portfolio showcases
+- **Fully Responsive**: Mobile-first design that works beautifully on all devices
+- **Accessible**: ARIA labels, keyboard navigation, and respects prefers-reduced-motion
+- **Performance Optimized**: React 19 with React Compiler for automatic memoization
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React 19** - Latest React with modern features
+- **TypeScript** - Type-safe development
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS v4** - Modern utility-first CSS framework
+- **Framer Motion** - Powerful animations and transitions
+- **Lucide React** - Beautiful, consistent icons
+- **Yarn PnP** - Fast, reliable package management
 
-Note: This will impact Vite dev & build performances.
+## Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── dock/              # macOS-style dock navigation
+│   ├── sections/          # Page sections (Hero, About, Projects, Skills, Contact)
+│   ├── shared/            # Reusable components (SectionWrapper, GlassCard, AnimatedText)
+│   └── projects/          # Project-specific components (for future expansion)
+├── hooks/                 # Custom React hooks
+│   ├── useScrollSpy.ts    # Track active section
+│   └── useDockMagnification.ts  # Calculate dock icon magnification
+├── utils/                 # Utility functions
+│   ├── constants.ts       # App constants
+│   └── animations.ts      # Framer Motion variants
+├── data/                  # Content data
+│   ├── projects.ts
+│   ├── skills.ts
+│   └── content.ts
+└── types/                 # TypeScript type definitions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x"
-import reactDom from "eslint-plugin-react-dom"
+Install dependencies:
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn install
 ```
+
+Start development server:
+
+```bash
+yarn dev
+```
+
+Build for production:
+
+```bash
+yarn build
+```
+
+Preview production build:
+
+```bash
+yarn preview
+```
+
+## Code Quality
+
+Run linting:
+
+```bash
+yarn lint
+```
+
+Format code:
+
+```bash
+yarn format
+```
+
+Check formatting:
+
+```bash
+yarn format:check
+```
+
+## Customization
+
+### Colors
+
+The primary orange color (#FF8B4D) can be customized in `tailwind.config.ts`:
+
+```typescript
+colors: {
+  primary: {
+    500: '#ff8b4d',  // Main brand color
+    // ... other shades
+  }
+}
+```
+
+### Content
+
+Update the following files to customize content:
+
+- `src/data/projects.ts` - Your portfolio projects
+- `src/data/skills.ts` - Your technical skills
+- `src/data/content.ts` - Bio and text content
+
+### Profile Image
+
+Replace `src/assets/dani-profile.png` with your own profile image.
+
+## Sections
+
+1. **Hero** - Landing section with profile image and animated title
+2. **About** - Personal bio and interests
+3. **Projects** - Portfolio showcase (expandable for future features)
+4. **Skills** - Technical skills organized by category
+5. **Contact** - Contact form and social links
+
+## Dock Navigation
+
+The dock navigation features:
+
+- Icon magnification based on mouse proximity
+- Spring physics animations
+- Active state indicators with orange glow
+- Smooth scroll to sections
+- Keyboard accessible
+- Tooltips on hover
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+
+## License
+
+All rights reserved © 2026 Daniel Oquelis
+
+---
+
+Built with ❤️ using React, TypeScript, and Tailwind CSS
