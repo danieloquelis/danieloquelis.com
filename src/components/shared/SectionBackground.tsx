@@ -9,16 +9,16 @@ export const SectionBackground = ({
 }: SectionBackgroundProps) => {
   const orbPositions = {
     primary: {
-      orb1: "top-1/4 left-1/4",
-      orb2: "bottom-1/3 right-1/4",
+      orb1: { x: "20%", y: "30%" },
+      orb2: { x: "80%", y: "70%" },
     },
     secondary: {
-      orb1: "top-1/3 right-1/4",
-      orb2: "bottom-1/4 left-1/3",
+      orb1: { x: "70%", y: "30%" },
+      orb2: { x: "30%", y: "70%" },
     },
     tertiary: {
-      orb1: "top-1/2 left-1/4",
-      orb2: "bottom-1/4 right-1/3",
+      orb1: { x: "25%", y: "50%" },
+      orb2: { x: "75%", y: "60%" },
     },
   }
 
@@ -27,63 +27,91 @@ export const SectionBackground = ({
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* Base gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-gray-900" />
 
-      {/* Animated gradient orbs */}
+      {/* Optimized animated gradient orbs - using will-change for GPU acceleration */}
       <motion.div
-        className={`absolute ${positions.orb1} w-96 h-96 bg-primary-500/20 rounded-full blur-3xl`}
+        className="absolute w-[500px] h-[500px] rounded-full will-change-transform"
+        style={{
+          left: positions.orb1.x,
+          top: positions.orb1.y,
+          background:
+            "radial-gradient(circle, rgba(255, 139, 77, 0.3) 0%, rgba(255, 139, 77, 0.15) 40%, transparent 70%)",
+          filter: "blur(60px)",
+          transform: "translate(-50%, -50%)",
+        }}
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.5, 0.8, 0.5],
         }}
         transition={{
-          duration: 8,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       <motion.div
-        className={`absolute ${positions.orb2} w-96 h-96 bg-orange-600/20 rounded-full blur-3xl`}
+        className="absolute w-[450px] h-[450px] rounded-full will-change-transform"
+        style={{
+          left: positions.orb2.x,
+          top: positions.orb2.y,
+          background:
+            "radial-gradient(circle, rgba(255, 120, 60, 0.35) 0%, rgba(255, 100, 50, 0.18) 35%, transparent 65%)",
+          filter: "blur(70px)",
+          transform: "translate(-50%, -50%)",
+        }}
         animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.5, 0.3, 0.5],
+          opacity: [0.6, 0.9, 0.6],
         }}
         transition={{
-          duration: 8,
+          duration: 15,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 1,
+          delay: 2,
         }}
       />
 
-      {/* Floating particles */}
-      {[...Array(15)].map((_, i) => (
+      {/* Lighter floating particles - reduced count */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-primary-400/30 rounded-full"
+          className="absolute w-2 h-2 rounded-full will-change-transform"
           style={{
-            left: `${(i * 7) % 100}%`,
-            top: `${(i * 13) % 100}%`,
+            left: `${(i * 8 + 10) % 90}%`,
+            top: `${(i * 15 + 5) % 90}%`,
+            background: "rgba(255, 139, 77, 0.4)",
+            boxShadow: "0 0 8px rgba(255, 139, 77, 0.6)",
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0, 1, 0],
+            y: [0, -40, 0],
+            opacity: [0, 0.8, 0],
           }}
           transition={{
-            duration: 3 + (i % 3),
+            duration: 5 + (i % 3),
             repeat: Infinity,
-            delay: i * 0.2,
+            delay: i * 0.3,
+            ease: "easeInOut",
           }}
         />
       ))}
 
+      {/* Static gradient overlay - no animation for better performance */}
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(255, 139, 77, 0.06) 0%, transparent 60%)",
+        }}
+      />
+
       {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 139, 77, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 139, 77, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(255, 139, 77, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 139, 77, 0.15) 1px, transparent 1px)
           `,
           backgroundSize: "50px 50px",
         }}
