@@ -1,6 +1,6 @@
-import { SectionWrapper } from "../shared/SectionWrapper"
-import { SectionBackground } from "../shared/SectionBackground"
-import { AnimatedText } from "../shared/AnimatedText"
+import { SectionWrapper } from "@/components/shared/SectionWrapper"
+import { SectionBackground } from "@/components/shared/SectionBackground"
+import { AnimatedText } from "@/components/shared/AnimatedText"
 
 const skillCategories = [
   {

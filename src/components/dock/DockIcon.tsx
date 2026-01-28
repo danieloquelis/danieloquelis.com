@@ -12,7 +12,7 @@ export const DockIcon = ({
   onClick,
 }: DockIconProps) => {
   const IconComponent = LucideIcons[icon as keyof typeof LucideIcons] as
-    | React.ComponentType<{ className?: string }>
+    | React.ComponentType<{ className?: string; style?: React.CSSProperties }>
     | undefined
 
   if (!IconComponent) {
@@ -44,7 +44,7 @@ export const DockIcon = ({
       <motion.button
         onClick={onClick}
         aria-label={ariaLabel}
-        className={`relative flex items-center justify-center rounded-2xl transition-colors duration-200 ${
+        className={`relative flex items-center justify-center rounded-2xl transition-colors duration-200 cursor-pointer ${
           isActive
             ? "bg-primary-500/30 text-primary-400 shadow-lg shadow-primary-500/30"
             : "bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white"

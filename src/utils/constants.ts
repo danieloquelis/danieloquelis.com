@@ -1,4 +1,4 @@
-import type { DockItem, SectionId } from "../types/navigation.types"
+import type { DockItem, SectionId } from "@/types/navigation.types"
 
 export const SECTION_IDS: Record<string, SectionId> = {
   HERO: "hero",

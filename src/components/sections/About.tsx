@@ -1,9 +1,9 @@
 import { motion } from "framer-motion"
 import { Heart, Code, Palette, Rocket } from "lucide-react"
-import { SectionWrapper } from "../shared/SectionWrapper"
-import { SectionBackground } from "../shared/SectionBackground"
-import { AnimatedText } from "../shared/AnimatedText"
-import { staggerContainer } from "../../utils/animations"
+import { SectionWrapper } from "@/components/shared/SectionWrapper"
+import { SectionBackground } from "@/components/shared/SectionBackground"
+import { AnimatedText } from "@/components/shared/AnimatedText"
+import { staggerContainer } from "@/utils/animations"
 
 const interests = [
   { icon: Code, label: "Clean Code", color: "text-primary-500" },

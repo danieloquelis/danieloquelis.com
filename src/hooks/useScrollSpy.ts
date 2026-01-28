@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import type { SectionId } from "../types/navigation.types"
-import { SECTION_IDS } from "../utils/constants"
+import type { SectionId } from "@/types/navigation.types"
+import { SECTION_IDS } from "@/utils/constants"
 
 export const useScrollSpy = () => {
   const [activeSection, setActiveSection] = useState<SectionId>("hero")

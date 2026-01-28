@@ -1,5 +1,5 @@
 import { useState, useCallback, type RefObject } from "react"
-import { MAGNIFICATION_CONFIG } from "../utils/constants"
+import { MAGNIFICATION_CONFIG } from "@/utils/constants"
 
 interface UseDockMagnificationProps {
   dockRef: RefObject<HTMLElement>

@@ -1,9 +1,9 @@
 import { ExternalLink, Github } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { SectionWrapper } from "../shared/SectionWrapper"
-import { SectionBackground } from "../shared/SectionBackground"
-import { AnimatedText } from "../shared/AnimatedText"
-import { useRef, useState } from "react"
+import { SectionWrapper } from "@/components/shared/SectionWrapper"
+import { SectionBackground } from "@/components/shared/SectionBackground"
+import { AnimatedText } from "@/components/shared/AnimatedText"
+import { useRef } from "react"
 
 const projects = [
   {
@@ -92,7 +92,7 @@ const ProjectCard = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 text-primary-400 text-sm font-medium transition-all shadow-lg shadow-primary-500/0 hover:shadow-primary-500/20"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 text-primary-400 text-sm font-medium transition-all shadow-lg shadow-primary-500/0 hover:shadow-primary-500/20 cursor-pointer"
             >
               <ExternalLink className="w-4 h-4" />
               <span>Live Demo</span>
@@ -100,7 +100,7 @@ const ProjectCard = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 text-gray-300 text-sm font-medium transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 text-gray-300 text-sm font-medium transition-all cursor-pointer"
             >
               <Github className="w-4 h-4" />
               <span>Code</span>

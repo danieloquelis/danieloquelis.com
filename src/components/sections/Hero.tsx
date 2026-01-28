@@ -1,9 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ChevronDown } from "lucide-react"
-import { SectionWrapper } from "../shared/SectionWrapper"
-import { SectionBackground } from "../shared/SectionBackground"
-import { staggerContainer, fadeInUp, scaleIn } from "../../utils/animations"
+import { SectionWrapper } from "@/components/shared/SectionWrapper"
+import { SectionBackground } from "@/components/shared/SectionBackground"
+import { staggerContainer, fadeInUp, scaleIn } from "@/utils/animations"
 import { useRef } from "react"
+import profileImage from "@/assets/dani-profile.png"
 
 export const Hero = () => {
   const ref = useRef(null)
@@ -75,7 +76,7 @@ export const Hero = () => {
               }}
             />
             <img
-              src="/src/assets/dani-profile.png"
+              src={profileImage}
               alt="Daniel Oquelis"
               className="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-primary-500/60 object-cover shadow-2xl"
               style={{
@@ -130,7 +131,7 @@ export const Hero = () => {
         <motion.button
           variants={fadeInUp}
           onClick={scrollToNext}
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gray-800/60 hover:bg-gray-800/80 border border-gray-700/50 hover:border-primary-500/50 text-gray-300 hover:text-primary-400 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-primary-500/20"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gray-800/60 hover:bg-gray-800/80 border border-gray-700/50 hover:border-primary-500/50 text-gray-300 hover:text-primary-400 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-primary-500/20 cursor-pointer"
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Scroll to next section"

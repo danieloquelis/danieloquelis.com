@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react"
-import { SectionWrapper } from "../shared/SectionWrapper"
-import { SectionBackground } from "../shared/SectionBackground"
-import { AnimatedText } from "../shared/AnimatedText"
+import { SectionWrapper } from "@/components/shared/SectionWrapper"
+import { SectionBackground } from "@/components/shared/SectionBackground"
+import { AnimatedText } from "@/components/shared/AnimatedText"
 
 const socialLinks = [
   {
@@ -137,7 +137,7 @@ export const Contact = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-4 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40"
+                  className="w-full px-6 py-4 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40 cursor-pointer"
                 >
                   <span>Send Message</span>
                   <Send className="w-5 h-5" />
@@ -164,7 +164,7 @@ export const Contact = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-4 p-4 rounded-xl bg-gray-800/50 border border-gray-700/50 ${link.color} transition-all hover:border-primary-500/40 hover:bg-gray-800 group`}
+                    className={`flex items-center gap-4 p-4 rounded-xl bg-gray-800/50 border border-gray-700/50 ${link.color} transition-all hover:border-primary-500/40 hover:bg-gray-800 group cursor-pointer`}
                     whileHover={{ x: 5 }}
                   >
                     <link.icon className="w-6 h-6 group-hover:scale-110 transition-transform" />

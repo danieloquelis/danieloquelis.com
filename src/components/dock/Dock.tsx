@@ -1,10 +1,10 @@
 import { useRef } from "react"
 import { motion } from "framer-motion"
 import { DockIcon } from "./DockIcon"
-import { useDockMagnification } from "../../hooks/useDockMagnification"
-import { DOCK_ITEMS } from "../../utils/constants"
+import { useDockMagnification } from "@/hooks/useDockMagnification"
+import { DOCK_ITEMS } from "@/utils/constants"
 import type { DockProps } from "./dock.types"
-import type { SectionId } from "../../types/navigation.types"
+import type { SectionId } from "@/types/navigation.types"
 
 export const Dock = ({ activeSection }: DockProps) => {
   const dockRef = useRef<HTMLDivElement>(null)
