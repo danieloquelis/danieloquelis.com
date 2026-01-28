@@ -1,0 +1,24 @@
+# Build outputs
+dist
+dist-ssr
+*.local
+
+# Dependencies
+node_modules
+.pnp.*
+.yarn
+
+# Logs
+*.log
+
+# Editor
+.vscode
+.idea
+
+# OS
+.DS_Store
+
+# Package manager
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
