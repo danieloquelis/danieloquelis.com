@@ -1,4 +1,10 @@
-export type SectionId = "hero" | "about" | "projects" | "skills" | "contact"
+export type SectionId =
+  | "hero"
+  | "about"
+  | "launched"
+  | "opensource"
+  | "skills"
+  | "contact"
 
 export interface DockItem {
   id: SectionId

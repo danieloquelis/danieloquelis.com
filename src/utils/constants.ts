@@ -3,7 +3,8 @@ import type { DockItem, SectionId } from "@/types/navigation.types"
 export const SECTION_IDS: Record<string, SectionId> = {
   HERO: "hero",
   ABOUT: "about",
-  PROJECTS: "projects",
+  LAUNCHED: "launched",
+  OPENSOURCE: "opensource",
   SKILLS: "skills",
   CONTACT: "contact",
 }
@@ -22,10 +23,16 @@ export const DOCK_ITEMS: DockItem[] = [
     ariaLabel: "Navigate to About section",
   },
   {
-    id: "projects",
-    label: "Projects",
-    icon: "Briefcase",
-    ariaLabel: "Navigate to Projects section",
+    id: "launched",
+    label: "Launched",
+    icon: "Rocket",
+    ariaLabel: "Navigate to Launched products section",
+  },
+  {
+    id: "opensource",
+    label: "Open Source",
+    icon: "Github",
+    ariaLabel: "Navigate to Open Source section",
   },
   {
     id: "skills",

@@ -1,12 +1,7 @@
-export type ProjectCategory = "all" | "featured" | "web" | "personal"
-
-export interface TechStack {
-  name: string
-  color?: string
-}
+export type ProjectGroup = "product" | "open-source"
 
 export interface ProjectLink {
-  type: "demo" | "github" | "figma" | "other"
+  type: "demo" | "github"
   url: string
   label: string
 }
@@ -15,11 +10,14 @@ export interface Project {
   id: string
   title: string
   description: string
-  longDescription?: string
-  category: ProjectCategory[]
-  techStack: TechStack[]
+  group: ProjectGroup
+  tech: string[]
+  /** Imported cover image (real og:image for products) */
+  coverImage?: string
+  /** Fallback gradient for projects without a cover image (e.g. OSS repos) */
+  gradient?: string
+  /** Short emoji/label badge shown over the gradient fallback */
+  badge?: string
   links: ProjectLink[]
-  image?: string
-  featured: boolean
-  year: number
+  stars?: number
 }

@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import { Dock } from "@/components/dock/Dock"
 import { Hero } from "@/components/sections/Hero"
 import { About } from "@/components/sections/About"
-import { Projects } from "@/components/sections/Projects"
+import { Launched, OpenSource } from "@/components/sections/Projects"
 import { Skills } from "@/components/sections/Skills"
 import { Contact } from "@/components/sections/Contact"
 import { useScrollSpy } from "@/hooks/useScrollSpy"
@@ -31,7 +31,8 @@ function App() {
       >
         <Hero />
         <About />
-        <Projects />
+        <Launched />
+        <OpenSource />
         <Skills />
         <Contact />
       </motion.main>
