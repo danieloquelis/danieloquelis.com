@@ -115,7 +115,7 @@ export const Hero = () => {
           variants={fadeInUp}
           className="text-xl md:text-3xl text-gray-300 mb-8 font-light"
         >
-          Full-Stack Developer & Creative Technologist
+          Full-Stack Software Engineer
         </motion.p>
 
         {/* Description */}

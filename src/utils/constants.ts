@@ -5,7 +5,6 @@ export const SECTION_IDS: Record<string, SectionId> = {
   ABOUT: "about",
   LAUNCHED: "launched",
   OPENSOURCE: "opensource",
-  SKILLS: "skills",
   CONTACT: "contact",
 }
 
@@ -33,12 +32,6 @@ export const DOCK_ITEMS: DockItem[] = [
     label: "Open Source",
     icon: "Github",
     ariaLabel: "Navigate to Open Source section",
-  },
-  {
-    id: "skills",
-    label: "Skills",
-    icon: "Code2",
-    ariaLabel: "Navigate to Skills section",
   },
   {
     id: "contact",

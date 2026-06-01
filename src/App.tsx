@@ -3,7 +3,6 @@ import { Dock } from "@/components/dock/Dock"
 import { Hero } from "@/components/sections/Hero"
 import { About } from "@/components/sections/About"
 import { Launched, OpenSource } from "@/components/sections/Projects"
-import { Skills } from "@/components/sections/Skills"
 import { Contact } from "@/components/sections/Contact"
 import { useScrollSpy } from "@/hooks/useScrollSpy"
 import { useElasticScroll } from "@/hooks/useElasticScroll"
@@ -33,7 +32,6 @@ function App() {
         <About />
         <Launched />
         <OpenSource />
-        <Skills />
         <Contact />
       </motion.main>
 
